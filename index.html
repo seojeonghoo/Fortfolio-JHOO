@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서정후 | KDMHS 25th Web Programming</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <style>
+        :root {
+            --bg: #ffffff; --text: #111111; --card-bg: #f5f5f7;
+            --accent: #2563eb; --sub-text: #666666; --border: #eeeeee;
+        }
+        [data-theme='dark'] {
+            --bg: #1a1a1a; --text: #ffffff; --card-bg: #2d2d2d;
+            --accent: #60a5fa; --sub-text: #a0a0a0; --border: #3d3d3d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+        body { font-family: 'Pretendard', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.5; word-break: keep-all; }
+        
+        .theme-toggle {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            padding: 10px 15px; border-radius: 30px; border: 1px solid var(--border);
+            background: var(--card-bg); color: var(--text); cursor: pointer; font-weight: 600;
+        }
+
+        header { padding: 100px 20px 60px; max-width: 1100px; margin: 0 auto; }
+        .profile-section { display: flex; align-items: flex-end; gap: 40px; margin-bottom: 40px; }
+        .photo-frame { width: 200px; height: 260px; background: var(--card-bg); border-radius: 20px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border); }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .title-area h1 { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.04em; }
+        
+        .badge-row { display: flex; gap: 10px; margin-bottom: 15px; }
+        .badge { padding: 6px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: var(--card-bg); border: 1px solid var(--border); }
+        .badge.primary { background: var(--text); color: var(--bg); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px 100px; }
+        h2 { font-size: 1.8rem; margin: 80px 0 30px; font-weight: 700; }
+        details { border-top: 1px solid var(--border); }
+        details:last-child { border-bottom: 1px solid var(--border); }
+        summary { padding: 25px 10px; list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 700; }
+        summary::after { content: '→'; transition: transform 0.3s; opacity: 0.5; }
+        details[open] > summary::after { transform: rotate(90deg); }
+
+        .card { background: var(--card-bg); padding: 20px; border-radius: 16px; margin-bottom: 15px; border: 1px solid var(--border); }
+        .card-header { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--sub-text); margin-bottom: 8px; }
+        .card-title { font-size: 1.05rem; font-weight: 700; }
+        .card-rank { color: var(--accent); font-weight: 700; }
+        .card-info { font-size: 0.85rem; color: var(--sub-text); margin-top: 5px; }
+
+        .sub-details { border: none !important; }
+        .sub-details summary { font-size: 1.05rem; padding: 15px; background: var(--card-bg); border-radius: 12px; margin-bottom: 8px; }
+        
+        ul { padding-left: 20px; font-size: 0.9rem; color: var(--sub-text); }
+        li { margin-bottom: 4px; }
+
+        .contact-section { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); }
+        .icon-group { display: flex; gap: 20px; margin-top: 20px; }
+        .icon-link { color: var(--sub-text); transition: transform 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; }
+        .icon-link:hover { color: var(--accent); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .profile-section { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .photo-frame { width: 140px; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Mode</button>
+
+<header>
+    <div class="profile-section">
+        <div class="photo-frame"><img src="서정후_증명사진.jpg" alt="서정후"></div>
+        <div class="title-area">
+            <div class="badge-row">
+                <span class="badge primary">KDMHS 25th</span>
+                <span class="badge">Web Programming</span>
+            </div>
+            <h1>안녕하세요,<br>성장하는 개발자 서정후입니다.</h1>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <h2>History</h2>
+
+    <details open>
+        <summary>High School</summary>
+        <div class="detail-content">
+            <details class="sub-details" open>
+                <summary>2026학년도 (1학년)</summary>
+                <div class="detail-content">
+                    <div class="card">
+                        <div class="card-header">2026.03.03 - 현재</div>
+                        <div class="card-title">한국디지털미디어고등학교 제25기 입학</div>
+                        <p>웹프로그래밍과 서정후</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details>
+        <summary>Middle School</summary>
+        <div class="detail-content">
+            
+            <details class="sub-details">
+                <summary>2025학년도 (3학년)</summary>
+                <div class="detail-content">
+                    <div class="card">
+                        <div class="card-header">2025.04.04</div>
+                        <div class="card-title">과학전람회 <span class="card-rank">최우수상(1위)</span></div>
+                        <div class="card-info">전교생 중 참가자 37명</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">2025.07.22</div>
+                        <div class="card-title">수학 사고력 독서 한마당 <span class="card-rank">최우수상(1위)</span></div>
+                        <div class="card-info">3학년 참가자 15명</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">2025.03.27</div>
+                        <div class="card-title">제4회 청소년 IT경시대회 <span class="card-rank">장려상</span></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">2026.01.09 | 전교과 석권</div>
+                        <div class="card-title">교과우수상</div>
+                        <div class="card-info">국어, 사회, 도덕, 역사, 수학, 과학, 기술·가정, 체육, 음악, 미술, 영어</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">기타 활동 및 인성</div>
+                        <ul>
+                            <li>봉사상 (2025.06.09 | 274명) / 봉사상 (2025.10.23 | 273명)</li>
+                            <li>효행상 (2025.10.23 | 273명) / 개근상 (2026.01.09 | 272명)</li>
+                            <li>2학기 학급회장 / 1학기 학급부회장</li>
+                            <li>과학동아리 [과학나래] 활동</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <details class="sub-details">
+                <summary>2024학년도 (2학년)</summary>
+                <div class="detail-content">
+                    <div class="card">
+                        <div class="card-header">2024.11.06</div>
+                        <div class="card-title">진로포트폴리오대회 <span class="card-rank">최우수상(1위)</span></div>
+                        <div class="card-info">2학년 276명</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">2024.11.08 / 2024.04.01</div>
+                        <div class="card-title">효행체험보고서대회(2위) / 과학전람회(2위)</div>
+                        <div class="card-rank">우수상</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">기타 수상</div>
+                        <ul>
+                            <li>금연 환경조성 공모전(포스터) 장려상(3위 | 32명)</li>
+                            <li>글로벌 논술대회 장려상(3위 | 32명)</li>
+                            <li>숭실대 해커톤 우수작품상</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <details class="sub-details">
+                <summary>2023학년도 (1학년)</summary>
+                <div class="detail-content">
+                    <div class="card">
+                        <div class="card-header">2023.11.10 / 2023.05.03</div>
+                        <div class="card-title">진로포트폴리오대회(1위) / 과학행사-환경캐릭터(1위)</div>
+                        <div class="card-rank">최우수상</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">2023.12.12</div>
+                        <div class="card-title">소프트웨어 작품 공모전 <span class="card-rank">우수상(2위)</span></div>
+                        <div class="card-info">1학년 참가자 277명</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">2023.06.02</div>
+                        <div class="card-title">모범상 수상</div>
+                        <div class="card-info">1학년 283명</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">주요 활동</div>
+                        <ul>
+                            <li>인천북부교육지원청 영재교육원 수료</li>
+                            <li>인천 디지털 교육센터 앱개발자 과정 수료</li>
+                            <li>한국코드페어 예선 1차 합격 (네트워크 썬더)</li>
+                            <li>1학기 학급회장 역임</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details>
+        <summary>Elementary School</summary>
+        <div class="detail-content">
+            <div class="card">
+                <div class="card-title">주요 실적 기록</div>
+                <ul style="margin-top:10px;">
+                    <li>부원초 단위영재학급 3년 수료 (2020-2022)</li>
+                    <li>카이스트 사이버영재원 스크래치 이수 및 캠프 선정</li>
+                    <li>부원초 독서 마라톤 대회 3년 연속 대상</li>
+                    <li>인천 학생발명캐릭터 그리기 대회 은상</li>
+                    <li>SW사고력 올림피아드 장려상 / YTC 중국어 1급</li>
+                </ul>
+            </div>
+        </div>
+    </details>
+
+    <div class="contact-section">
+        <h2>Contact</h2>
+        <p style="font-size: 1.4rem; font-weight: 700;">미래를 코딩하는 개발자가 되겠습니다.</p>
+        
+        <div class="icon-group">
+            <a href="mailto:seojh0800@dimigo.hs.kr" class="icon-link" title="Gmail">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+
+            <a href="https://github.com/seojeonghoo" target="_blank" class="icon-link" title="GitHub">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+
+            <a href="https://www.instagram.com/jeonghoo.l.g/" target="_blank" class="icon-link" title="Instagram">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const themeBtn = document.getElementById('themeBtn');
+    function toggleTheme() {
+        const body = document.documentElement;
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.setAttribute('data-theme', 'light');
+            themeBtn.innerText = "☀️ Mode";
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeBtn.innerText = "🌙 Mode";
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeBtn.innerText = savedTheme === 'dark' ? "🌙 Mode" : "☀️ Mode";
+    }
+</script>
+</body>
+</html>

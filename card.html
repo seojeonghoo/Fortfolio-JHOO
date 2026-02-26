@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서정후 | Portfolio Card</title>
+
+<link rel="stylesheet" as="style" crossorigin
+href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
+
+<style>
+:root {
+    --bg:#ffffff;
+    --text:#111111;
+    --card-bg:#f5f5f7;
+    --accent:#2563eb;
+    --sub:#666666;
+    --border:#eeeeee;
+}
+[data-theme='dark']{
+    --bg:#1a1a1a;
+    --text:#ffffff;
+    --card-bg:#2d2d2d;
+    --accent:#60a5fa;
+    --sub:#a0a0a0;
+    --border:#3d3d3d;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    font-family:'Pretendard',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    transition:.3s;
+}
+
+.card{
+    width:340px;
+    padding:40px 30px;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:24px;
+    text-align:center;
+}
+
+.profile{
+    width:110px;
+    height:140px;
+    border-radius:16px;
+    overflow:hidden;
+    margin:0 auto 20px;
+    border:1px solid var(--border);
+}
+.profile img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:100px;
+    font-size:.8rem;
+    font-weight:600;
+    background:var(--text);
+    color:var(--bg);
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:1.5rem;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+p{
+    font-size:.9rem;
+    color:var(--sub);
+    margin-bottom:20px;
+}
+
+.btn{
+    display:block;
+    width:100%;
+    padding:14px;
+    border-radius:14px;
+    background:var(--text);
+    color:var(--bg);
+    text-decoration:none;
+    font-weight:600;
+    transition:.2s;
+}
+.btn:hover{opacity:.85;}
+
+.qr-wrap{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+}
+.qr-wrap img{
+    width:120px;
+    height:120px;
+    background:#fff;
+    padding:6px;
+    border-radius:12px;
+}
+.qr-wrap span{
+    font-size:.75rem;
+    color:var(--sub);
+}
+
+.theme-toggle{
+    position:fixed;
+    top:20px;
+    right:20px;
+    padding:8px 14px;
+    border-radius:30px;
+    border:1px solid var(--border);
+    background:var(--card-bg);
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
+
+<div class="card">
+
+    <div class="profile">
+        <img src="서정후_증명사진.jpg" alt="서정후">
+    </div>
+
+    <span class="badge">KDMHS 25th Web Programming</span>
+
+    <h1>서정후</h1>
+    <p>성장하는 프론트엔드 개발자</p>
+
+    <a href="https://seojeonghoo.github.io/Fortfolio-JHOO/" class="btn">
+        포트폴리오 보러가기 →
+    </a>
+
+    <!-- QR 코드 -->
+    <div class="qr-wrap">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://seojeonghoo.github.io/Fortfolio-JHOO/"
+          alt="portfolio qr">
+        <span>카메라로 스캔해서 바로 접속</span>
+    </div>
+
+</div>
+
+<script>
+const themeBtn = document.getElementById('themeBtn');
+
+function toggleTheme(){
+    const html = document.documentElement;
+    if(html.getAttribute('data-theme') === 'dark'){
+        html.setAttribute('data-theme','light');
+        themeBtn.innerText="☀️";
+        localStorage.setItem('theme','light');
+    }else{
+        html.setAttribute('data-theme','dark');
+        themeBtn.innerText="🌙";
+        localStorage.setItem('theme','dark');
+    }
+}
+
+const saved = localStorage.getItem('theme');
+if(saved){
+    document.documentElement.setAttribute('data-theme',saved);
+    themeBtn.innerText = saved === 'dark' ? "🌙" : "☀️";
+}
+</script>
+
+</body>
+</html>
